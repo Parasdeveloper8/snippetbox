@@ -51,15 +51,24 @@ func (m *SnippetModel) Insert(title string, content string, expires int) (int, e
 
 // This will return a specific snippet based on its id.
 func (m *SnippetModel) Get(id int) (*Snippet, error) {
+	// Define the SQL query with explicit column names
+	stmt := `SELECT id, title, content, created, expires FROM snippets WHERE id = ?`
+
+	// Create a new Snippet instance to hold the result
 	s := &Snippet{}
-	err := m.DB.QueryRow("SELECT ...", id).Scan(&s.ID, &s.Title, &s.Content, &s.Created, &s.Expires)
+
+	// Execute the query and scan the result into the Snippet fields
+	err := m.DB.QueryRow(stmt, id).Scan(&s.ID, &s.Title, &s.Content, &s.Created, &s.Expires)
 	if err != nil {
+		// Check if no record was found and return a custom error
 		if errors.Is(err, sql.ErrNoRows) {
 			return nil, ErrNoRecord
-		} else {
-			return nil, err
 		}
+		// Return any other errors
+		return nil, err
 	}
+
+	// Return the fetched Snippet
 	return s, nil
 }
 
