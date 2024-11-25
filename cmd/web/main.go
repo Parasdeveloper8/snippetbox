@@ -3,11 +3,11 @@ package main
 import (
 	"database/sql"
 	"flag"
+	"html/template"
 	"log"
 	"main/internal/models"
 	"net/http"
 	"os"
-	"text/template"
 
 	// Import the models package that we just created. You need to prefix this with
 	// whatever module path you set up back in chapter 02.01 (Project Setup and Creating
