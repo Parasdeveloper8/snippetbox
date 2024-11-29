@@ -12,5 +12,7 @@ require (
 	github.com/gorilla/sessions v1.4.0 // indirect
 	github.com/julienschmidt/httprouter v1.3.0 // indirect
 	github.com/justinas/alice v1.2.0 // indirect
+	github.com/justinas/nosurf v1.1.1 // indirect
 	github.com/srinathgs/mysqlstore v0.0.0-20231123182912-ffbca72c0a70 // indirect
+	golang.org/x/crypto v0.29.0 // indirect
 )
